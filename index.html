@@ -18,14 +18,17 @@
         .gold-border { border: 3px solid #ef4444; } 
         .btn-red { background-color: #dc2626; color: white; font-weight: 900; }
         .text-distrileco { color: #facc15; }
+        /* Estilo para el modal de datos */
+        #data-modal { backdrop-filter: blur(8px); }
     </style>
 </head>
 <body class="bg-custom-dark text-white font-sans min-h-screen flex flex-col items-center p-6">
 
     <header class="w-full max-w-md text-center mb-6">
-        <img src="logodistrileco.png" 
-             alt="Logo Distrileco" 
-             class="brand-image">
+        <img src="logodistrileco.png" alt="Logo Distrileco" class="brand-image">
+        <div class="mt-4 inline-block bg-red-600/20 border border-red-600 px-4 py-1 rounded-full">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-red-500">📍 Exclusivo Caucasia, Antioquia</p>
+        </div>
     </header>
 
     <main class="w-full max-w-sm">
@@ -37,10 +40,13 @@
             
             <img src="sabonificacion.jpeg" alt="Premio Arroz" class="w-full rounded-3xl shadow-2xl border-2 border-red-600/30">
 
-            <p class="text-gray-300 text-sm leading-relaxed">
-                Califícanos en Google Maps y reclama <br>
-                <span class="text-xl font-bold text-red-500 uppercase">¡2 LIBRAS DE SUPERARROZ!</span>
-            </p>
+            <div class="space-y-2">
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Califícanos en Google Maps y reclama <br>
+                    <span class="text-xl font-bold text-red-500 uppercase">¡2 LIBRAS DE SUPERARROZ!</span>
+                </p>
+                <p class="text-[10px] text-zinc-500 italic">*Actividad válida únicamente en la sede Caucasia.</p>
+            </div>
             
             <a href="https://search.google.com/local/writereview?placeid=ChIJ6xyhrAVvW44RfdsumGfVbKU" 
                target="_blank" 
@@ -57,8 +63,17 @@
             <h2 class="text-2xl font-bold uppercase">¿Ya nos calificaste?</h2>
             <p class="text-gray-400 text-sm italic">Tu apoyo ayuda a DISTRILECO a seguir brindando lo mejor a Caucasia.</p>
             
-            <button onclick="generateTicket()" 
-                    class="w-full bg-white text-black font-black py-4 rounded-2xl uppercase tracking-widest hover:bg-gray-200 shadow-xl">
+            <div class="bg-zinc-900 p-4 rounded-xl text-left border border-zinc-800">
+                <label class="flex items-start space-x-3 cursor-pointer">
+                    <input type="checkbox" id="data-consent" class="mt-1 form-checkbox h-4 w-4 text-red-600">
+                    <span class="text-[10px] text-gray-400 leading-tight">
+                        Acepto el tratamiento de mis datos personales según la <b>Ley 1581 de 2012</b>. Mis datos serán usados solo para la gestión de esta actividad promocional por <b>DISTRILECO CAUCASIA</b>.
+                    </span>
+                </label>
+            </div>
+
+            <button onclick="checkConsent()" 
+                    class="w-full bg-white text-black font-black py-4 rounded-2xl uppercase tracking-widest hover:bg-gray-200 shadow-xl transition-colors">
                 GENERAR MI TICKET
             </button>
         </div>
@@ -75,6 +90,7 @@
                 <p class="text-white font-bold mb-4 text-center">GRATIS 2 LIBRAS</p>
                 
                 <div class="h-px bg-red-500/30 w-full mb-4"></div>
+                <p class="text-[11px] text-gray-300 font-medium text-center italic mb-2">Válido en Caucasia</p>
                 <p class="text-[11px] text-gray-300 font-medium text-center">Reclámalo en oficina:<br>Carrera 2 diag. 25 No. 2-25, El Carmen</p>
             </div>
             
@@ -85,7 +101,10 @@
 
     </main>
 
-    <footer class="mt-auto py-8 text-center">
+    <footer class="mt-auto py-8 text-center w-full max-w-md">
+        <p class="text-[9px] text-zinc-600 mb-4 px-6 uppercase tracking-wider leading-tight">
+            De conformidad con la Ley 1581 de 2012, informamos que los datos capturados serán tratados bajo políticas de seguridad y privacidad de la información.
+        </p>
         <p class="text-[10px] text-red-500/70 font-bold tracking-[0.3em] uppercase">
             © 2026 VIBRAS POSITIVAS HM - DISTRILECO CAUCASIA SAS
         </p>
@@ -99,7 +118,16 @@
             
             const next = document.getElementById(`step-${n}`);
             next.classList.remove('hidden');
-            window.scrollTo(0, 0); // Asegura que el usuario vea el inicio de la tarjeta
+            window.scrollTo(0, 0);
+        }
+
+        function checkConsent() {
+            const consent = document.getElementById('data-consent').checked;
+            if (!consent) {
+                alert("Para generar tu ticket, debes aceptar el tratamiento de datos personales (Habeas Data).");
+                return;
+            }
+            generateTicket();
         }
 
         function generateTicket() {
