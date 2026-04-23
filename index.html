@@ -42,7 +42,7 @@
                 <span class="text-xl font-bold text-red-500 uppercase">¡2 LIBRAS DE SUPERARROZ!</span>
             </p>
             
-            <a href="https://search.google.com/local/writereview?placeid=ChIJWaAJspBvW44R2bBlPDS8OQA" 
+            <a href="https://search.google.com/local/writereview?placeid=ChIJ6xyhrAVvW44RfdsumGfVbKU" 
                target="_blank" 
                onclick="changeStep(2)"
                class="btn-red block w-full py-5 rounded-2xl text-lg uppercase shadow-[0_10px_20px_rgba(220,38,38,0.4)] transform active:scale-95 transition-all">
@@ -65,20 +65,20 @@
 
         <div id="step-3" class="hidden text-center space-y-6">
             <div class="gold-border p-8 rounded-[2rem] bg-zinc-900/80 backdrop-blur-md relative">
-                <p class="text-xs font-bold text-red-500 uppercase tracking-[0.4em] mb-4">TICKET DE RECOMPENSA</p>
+                <p class="text-xs font-bold text-red-500 uppercase tracking-[0.4em] mb-4 text-center">TICKET DE RECOMPENSA</p>
                 
-                <div class="bg-black py-3 rounded-xl mb-4 border border-zinc-800">
+                <div class="bg-black py-3 rounded-xl mb-4 border border-zinc-800 text-center">
                     <span id="ticket-id" class="text-3xl font-black text-white tracking-widest uppercase">---</span>
                 </div>
                 
-                <h3 class="text-2xl font-black text-distrileco italic mb-1 uppercase">SUPERARROZ</h3>
-                <p class="text-white font-bold mb-4">GRATIS 2 LIBRAS</p>
+                <h3 class="text-2xl font-black text-distrileco italic mb-1 uppercase text-center">SUPERARROZ</h3>
+                <p class="text-white font-bold mb-4 text-center">GRATIS 2 LIBRAS</p>
                 
                 <div class="h-px bg-red-500/30 w-full mb-4"></div>
-                <p class="text-[11px] text-gray-300 font-medium">Reclámalo en oficina:<br>Carrera 2 diag. 25 No. 2-25, El Carmen</p>
+                <p class="text-[11px] text-gray-300 font-medium text-center">Reclámalo en oficina:<br>Carrera 2 diag. 25 No. 2-25, El Carmen</p>
             </div>
             
-            <p class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest animate-pulse">
+            <p class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest animate-pulse text-center">
                 Presenta este código único en el mostrador
             </p>
         </div>
@@ -99,14 +99,14 @@
             
             const next = document.getElementById(`step-${n}`);
             next.classList.remove('hidden');
+            window.scrollTo(0, 0); // Asegura que el usuario vea el inicio de la tarjeta
         }
 
         function generateTicket() {
-            // Generador de código: SA (SuperArroz) + Mes + Día + Aleatorio
             const now = new Date();
             const month = (now.getMonth() + 1).toString().padStart(2, '0');
             const day = now.getDate().toString().padStart(2, '0');
-            const random = Math.floor(Math.random() * 9000 + 1000); // 4 dígitos
+            const random = Math.floor(Math.random() * 9000 + 1000); 
             
             const finalID = `SA-${month}${day}-${random}`;
             
