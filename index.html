@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gana con Distrileco</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .brand-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 24px;
+            margin: 0 auto;
+            display: block;
+        }
+        .bg-custom-dark { background: radial-gradient(circle, #242424 0%, #000000 100%); }
+        .gold-border { border: 2px solid #ef4444; } /* Rojo Distrileco */
+        .btn-red { background-color: #dc2626; color: white; font-weight: 900; }
+        .text-distrileco { color: #facc15; } /* Amarillo Superarroz */
+    </style>
+</head>
+<body class="bg-custom-dark text-white font-sans min-h-screen flex flex-col items-center p-6">
+
+    <header class="w-full max-w-md text-center mb-8">
+        <img src="logodistrileco.jpg" 
+             alt="Logo Distrileco Caucasia" 
+             class="brand-image"
+             onerror="this.src='https://via.placeholder.com/300x300?text=Distrileco+Caucasia'">
+    </header>
+
+    <main class="w-full max-w-sm">
+
+        <div id="step-1" class="text-center space-y-6">
+            <h1 class="text-3xl font-black italic uppercase tracking-tighter">
+                Tu opinión nos <span class="text-distrileco">hace crecer</span>
+            </h1>
+            <p class="text-gray-300 text-sm leading-relaxed">
+                Califícanos en Google Maps y reclama <br>
+                <span class="text-xl font-bold text-white text-red-500">¡2 LIBRAS DE SUPERARROZ!</span>
+            </p>
+            
+            <a href="https://search.google.com/local/writereview?placeid=ChIJWaAJspBvW44R2bBlPDS8OQA" 
+               target="_blank" 
+               onclick="changeStep(2)"
+               class="btn-red block w-full py-5 rounded-2xl text-lg uppercase shadow-[0_10px_20px_rgba(220,38,38,0.4)] transform active:scale-95 transition-all">
+                DEJAR MI RESEÑA
+            </a>
+        </div>
+
+        <div id="step-2" class="hidden text-center space-y-6">
+            <div class="inline-block p-5 bg-red-600/10 rounded-full">
+                <span class="text-6xl">🍚</span>
+            </div>
+            <h2 class="text-2xl font-bold">¿Ya nos calificaste?</h2>
+            <p class="text-gray-400 text-sm">Gracias por preferir a **Distrileco Caucasia SAS**. Tu apoyo es vital.</p>
+            
+            <button onclick="changeStep(3)" 
+                    class="w-full bg-white text-black font-black py-4 rounded-2xl uppercase tracking-widest hover:bg-gray-200">
+                GENERAR MI REGALO
+            </button>
+        </div>
+
+        <div id="step-3" class="hidden text-center space-y-6">
+            <div class="gold-border p-8 rounded-[2rem] bg-zinc-900/50 backdrop-blur-md relative overflow-hidden">
+                <p class="text-xs font-bold text-red-500 uppercase tracking-[0.4em] mb-2">TICKET DE RECOMPENSA</p>
+                <h3 class="text-4xl font-black text-white italic mb-1 uppercase">SUPERARROZ</h3>
+                <p class="text-yellow-400 font-bold mb-4">GRATIS 2 LIBRAS</p>
+                
+                <div class="h-px bg-red-500/30 w-full mb-4"></div>
+                <p class="text-[11px] text-gray-300 font-medium">Reclámalo en oficina:<br>Carrera 2 diagonal 25 No. 2-25</p>
+            </div>
+            
+            <p class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
+                Muestra esta pantalla en el mostrador para redimir.
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="mt-auto py-10 text-center">
+        <p class="text-[10px] text-red-500/70 font-bold tracking-[0.3em] uppercase">
+            © 2026 VIBRAS POSITIVAS HM - DISTRILECO CAUCASIA SAS
+        </p>
+    </footer>
+
+    <script>
+        function changeStep(n) {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            
+            const next = document.getElementById(`step-${n}`);
+            next.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
